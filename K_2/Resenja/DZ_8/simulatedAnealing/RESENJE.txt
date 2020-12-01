@@ -1,0 +1,15 @@
+===================
+Najbolje resenje: 11
+--------------------
+Dobijeno sa vrednostima:
+[1 0 1 1 0 1 0 1 1 0 1 0 0 1 0 0 0 0 1 1 0 1 0 1 1 1 0 1 0 0 0 1 1 1 1 0 0 0 1 0 1 1 1 0 0 1 0 1 1 0 1 1 1 1 1 1 1 0 0 1 1 1 0 0]
+====================
+
+
+Napomena: 
+Imam tri grafika - jedan je za kumulativni minimum kroz 20 pozivanja optimizacije, jedan grafik je za srednji kumulativni minimum
+a treci grafik je izgled niza "a". Taj niz koristim prilikom hladjenja temperature. Kod mene se pokazalo da dobijam bolje
+performanse kada imam np.linspace() za "a" nego kada mi je "a" fiksno. Tada mi previse brzo konvergira za tih 100000 iteracija sto treba
+da se odradi.
+Interesantna stvar je takodje ako se uporede grafici - moze da se uoci zavisnost smanjenja cost fje kroz 100000 iteracija u odnosu na
+vrednosti iz "a".

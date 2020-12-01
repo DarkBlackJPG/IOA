@@ -1,0 +1,23 @@
+Optimization terminated successfully.
+         Current function value: 0.006228
+         Iterations: 7421
+         Function evaluations: 10811
+===========================================
+Current weight distribution:
+W1 0.88325045100750076976
+W2 2.43468752117920894662
+W3 1.97050508227766618674
+W4 1.06589686345282852464
+W5 -0.84798201595452371571
+W6 -6.16477911182597893003
+W7 -4.68607649872738640795
+W8 9.60003048219963872612
+W9 -2.16568448676555913579
+W10 -2.10280292543181035470
+
+Cost function is: 0.006228376112312787
+===========================================
+
+
+NAPOMENA ZA SLIKU: Narandzasta linija je posledica optimizacije, a plava linija je samo Yout. Izvorni kod iscrtavanja je u istom fajlu kao
+i glavni kod programa. Svaki put se generise nova kombinacija tezina.
