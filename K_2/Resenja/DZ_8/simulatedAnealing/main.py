@@ -38,8 +38,8 @@ def simulated_anealing(X):
     cummulative_minimum.append(current_x_function)
     current_minimum_combination = current_x.copy()
 
-    h_min = 2
-    h_max = 64
+    h_min = 5
+    h_max = 45
 
     current_iteration = 1
 
@@ -118,10 +118,11 @@ if __name__ == '__main__':
         average /= count
         average_cumulative_array.append(average)
 
-    plt.figure(1)
+    plt.figure(1, dpi=200, figsize=[10.8, 9])
     plt.xscale("log")
     plt.yscale("log")
     plt.grid(color='lightgray', linestyle='-', linewidth=1)
+    plt.axhline(32, linestyle='--', color='lightgreen')
     plt.title("Kumulativni minimum")
     plt.xlabel("Iteracija")
     plt.ylabel("Vrednost")
@@ -132,7 +133,8 @@ if __name__ == '__main__':
             i[1].append(temp)
         plt.plot(x_values, i[1])
     plt.show()
-    plt.figure(2)
+    plt.figure(2, dpi=200, figsize=[10.8, 9])
+    plt.axhline(32, linestyle='--', color='lightgreen')
     plt.xscale("log")
     plt.yscale("log")
     plt.grid(color='lightgray', linestyle='-', linewidth=1)
@@ -142,7 +144,7 @@ if __name__ == '__main__':
     x_values = np.arange(0, 100000)
     plt.plot(x_values, average_cumulative_array)
     plt.show()
-    plt.figure(3)
+    plt.figure(3, dpi=200, figsize=[10.8, 9])
     plt.xscale("log")
     plt.yscale("log")
     plt.grid(color='lightgray', linestyle='-', linewidth=1)
