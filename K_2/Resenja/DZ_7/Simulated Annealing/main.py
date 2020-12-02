@@ -13,7 +13,7 @@ FILES = [173669, 275487, 1197613, 1549805, 502334, 217684, 1796841, 274708,
          2304253, 4761871, 205387, 6148422, 414559, 2893305, 2158562, 465972, 304078,
          1841018, 1915571]
 
-a = np.linspace(0.94, 0.96, num=100000)
+a = np.linspace(0.94, 0.96, 100000)
 
 
 def optimization_function(X):
@@ -38,7 +38,7 @@ def simulated_anealing(X):
     cummulative_minimum.append(current_x_function)
     current_minimum_combination = current_x.copy()
 
-    h_min = 5
+    h_min = 2
     h_max = 45
 
     current_iteration = 1
@@ -92,7 +92,8 @@ def simulated_anealing(X):
 if __name__ == '__main__':
 
     tuple_data = []
-
+    current_optimization_best = 2 * 1024**2
+    best_array = []
     for i in range(0, 20):
         init_array = np.zeros(64)
         number_of_ones = np.round(random.uniform(0, 64))
@@ -101,12 +102,15 @@ if __name__ == '__main__':
 
         np.random.shuffle(init_array)
         optimization_best, cumulative_minimum, best_combination = simulated_anealing(init_array.astype(int))
+        if(optimization_best < current_optimization_best):
+            current_optimization_best = optimization_best
+            best_array = best_combination.copy()
         tuple_data.append([optimization_best, cumulative_minimum, best_combination])
 
     average_cumulative_array = []
     iteration = 0
 
-    for i in range(0, len(tuple_data[0][1])):
+    for i in range(0, 100000):
         average = 0
         count = 0
         for j in tuple_data:
@@ -154,10 +158,9 @@ if __name__ == '__main__':
     x_values = np.arange(0, 100000)
     plt.plot(x_values, a)
     plt.show()
-    sorted_data = sorted(tuple_data, key=lambda x: x[0])
     print("===================")
-    print("Najbolje resenje: " + str(sorted_data[0][0]))
+    print("Najbolje resenje: " + str(current_optimization_best))
     print("--------------------")
     print("Dobijeno sa vrednostima: ")
-    print(tuple_data[0][2])
+    print(best_array)
     print("====================")
