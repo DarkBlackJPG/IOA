@@ -158,9 +158,9 @@ def pso(iterations=100, flock_size=100, c1=1.494, c2=1.494, w=0.729):
 
 if __name__ == '__main__':
 
-    test = True
+    test = False
     if not test:
-        best = pso(iterations=1000, flock_size=50)
+        best = pso(iterations=2000, flock_size=100)
         np.set_printoptions(precision=20)
         print("Best position S1: {}".format(best['points']['S1']))
         print("Best position S2: {}".format(best['points']['S2']))
