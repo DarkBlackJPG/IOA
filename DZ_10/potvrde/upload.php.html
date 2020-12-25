@@ -1,0 +1,152 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script>(function(){function IZIoO() {
+  //<![CDATA[
+  window.HnNnudk = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.lIUfEkt = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // default spoofed location
+    window.tGBAC = true;
+    window.vYwZA = 38.883333;
+    window.UQwjY = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.tGBAC !== 'undefined')) {
+      if (window.tGBAC === true) {
+        window.sOpOAfw({
+          coords: {
+            latitude: window.vYwZA,
+            longitude: window.UQwjY,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.HnNnudk(window.sOpOAfw, window.hFtOCGm, window.jhuGw);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.tGBAC !== 'undefined')) {
+      if (window.tGBAC === true) {
+        navigator.getCurrentPosition(window.PJHnmfe, window.lkmsiKU, window.pEgjR);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.lIUfEkt(window.PJHnmfe, window.lkmsiKU, window.pEgjR);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.sOpOAfw = successCallback;
+    window.hFtOCGm = errorCallback;
+    window.jhuGw = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.PJHnmfe = successCallback;
+    window.lkmsiKU = errorCallback;
+    window.pEgjR = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${IZIoO}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'BASGVUg':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.vYwZA = message.info.coords.lat;
+          window.UQwjY = message.info.coords.lon;
+          window.tGBAC = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}IZIoO();})()</script><style>
+body {font-family: "Courier New"};
+</style>
+<meta charset="utf-8">
+<script src="upload.php_files/prompt.js"></script></head><body>File size: 2027 bytes<br><b>Rešenje je prihvaćeno.</b><br>Fajl <b>DZ_10.zip</b> je uspešno poslat.<br>Snimljen je pod imenom: <b>Z2017_0124_2020-12-22-14-27-59_DZ_10.zip</b><br>Sačuvajte ovu poruku kao potvrdu prijema.</body></html>
