@@ -160,12 +160,12 @@ if __name__ == '__main__':
 
     test = False
     if not test:
-        best = pso(iterations=2000, flock_size=100)
+        best = pso(iterations=1000, flock_size=50)
         np.set_printoptions(precision=20)
         print("Best position S1: {}".format(best['points']['S1']))
         print("Best position S2: {}".format(best['points']['S2']))
         print("Cost is: {}".format(best['cost']))
     else:
-        S1 = [3.17271137, 3.32322492, 1.78075342]
-        S2 = [4.51546244, 3.96841183, 4.00000000]
+        S1 = [2.965020787253907, 3.8308881279902014, 0.8706730994636215]
+        S2 = [4.3846386685576695, 4.493541052442777, 1.5003437622189946]
         print(cost_function({'S1': S1, 'S2': S2}))
