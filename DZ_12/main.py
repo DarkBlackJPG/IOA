@@ -14,52 +14,76 @@ def second_opt_fun(x1, x2):
 MAX_ELEM = 10000
 
 if __name__ == '__main__':
-    points = []
-    points2 = []
+    points_x = []
+    points_y = []
+    points2_x = []
+    points2_y = []
 
     print("Generating points...")
     for i in range(0, MAX_ELEM):
         x = random.uniform(-1, 1)
         y = random.uniform(-1, 1)
-        point = {'x': first_opt_fun(x, y), 'y': second_opt_fun(x, y)}
-        points.append(point)
+
+        points_x.append(first_opt_fun(x, y))
+        points_y.append(second_opt_fun(x, y))
 
         while not (x * y + 1/4 >= 0):
             x = random.uniform(-1, 1)
             y = random.uniform(-1, 1)
 
-        point2 = {'x': first_opt_fun(x, y), 'y': second_opt_fun(x, y)}
-        points2.append(point2)
+        points2_x.append(first_opt_fun(x,y))
+        points2_y.append(second_opt_fun(x,y))
 
     print("Points generated...")
 
-    print("Plotting first plot...")
-    plt.figure(1)
-    for i in range(0, len(points)):
+    print("Finding points...")
+
+    first_light_x = []
+    first_light_y = []
+    first_red_x = []
+    first_red_y = []
+    second_light_x = []
+    second_light_y = []
+    second_red_x = []
+    second_red_y = []
+    for i in range(0, MAX_ELEM):
         foundDom = False
-        for j in range(0, len(points)):
-            if points[i]['x'] > points[j]['x'] and points[i]['y'] > points[j]['y']:
+        for j in range(0, MAX_ELEM):
+            if points_x[i] > points_x[j] and points_y[i] > points_y[j]:
                 foundDom = True
                 break
-
         if not foundDom:
-            plt.scatter(points[i]['x'], points[i]['y'], s=2, c='red')
+            first_red_x.append(points_x[i])
+            first_red_y.append(points_y[i])
         else:
-            plt.scatter(points[i]['x'], points[i]['y'], s=1, c='black')
+            first_light_x.append(points_x[i])
+            first_light_y.append(points_y[i])
 
-    print("Plotting second plot...")
-    plt.figure(2)
-    for i in range(0, len(points2)):
+
+    for i in range(0, MAX_ELEM):
         foundDom = False
-        for j in range(0, len(points2)):
-            if points2[i]['x'] > points2[j]['x'] and points2[i]['y'] > points2[j]['y']:
+        for j in range(0, MAX_ELEM):
+            if points2_x[i] > points2_x[j] and points2_y[i] > points2_y[j]:
                 foundDom = True
                 break
-
         if not foundDom:
-            plt.scatter(points2[i]['x'], points2[i]['y'], s=2, c='red')
+            second_red_x.append(points2_x[i])
+            second_red_y.append(points2_y[i])
         else:
-            plt.scatter(points2[i]['x'], points2[i]['y'], s=1, c='black')
+            second_light_x.append(points2_x[i])
+            second_light_y.append(points2_y[i])
 
+    print("Points found")
+    print("Generating plots")
+
+    plt.figure(1, dpi=320, figsize=[26.7, 15])
+    plt.grid()
+    plt.scatter(first_light_x, first_light_y, marker='o', s=1, c='lightgray')
+    plt.scatter(first_red_x, first_red_y, marker='x',s=1, c='red')
+
+    plt.figure(2, dpi=320, figsize=[26.7, 15])
+    plt.grid()
+    plt.scatter(second_light_x, second_light_y, marker='o',s=1, c='lightgray')
+    plt.scatter(second_red_x, second_red_y, marker='x',s=1, c='red')
     plt.show()
     print("Finish...")
