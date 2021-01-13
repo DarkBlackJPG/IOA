@@ -40,16 +40,16 @@ POPULATION = 2000
 
 ITERATIONS = 20
 
-NUMBER_OF_FILES = 64
+NUMBER_OF_BITS = 64
 
 K_FACTOR = 0.25
 K_BEST = int(2000 * K_FACTOR)
 
-ONE_POINT_CROSSOVER = int(NUMBER_OF_FILES / 2)
+ONE_POINT_CROSSOVER = int(NUMBER_OF_BITS / 2)
 
 
 def initialize_population():
-    global NUMBER_OF_FILES
+    global NUMBER_OF_BITS
     population = []
     for i in range(0, POPULATION):
         K = random.randint(5, 45)
