@@ -1,0 +1,32 @@
+                                            BINARNI OBLIK                                                                                                       DECIMALNI OBLIK
+
+[1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0]........1431489163
+
+
+Ako postoji jedno resenje, tada mozemo da zakljucimo da postoji jos 30 drugih resenja koji su zapravo shiftovane kombinacije za neko odredjeno k = 0....30.
+Dakle najmanje postoji 31 resenje ako usvojimo pretpostavku da resenje uopste postoji
+
+Potpuna pretraga ovog optimizacionog problema nije moguca jer je optimizacioni prostor poprilicno velik i pored svoje velicine, optimizaciona funkcija nije trivijalna -
+optimizaciona funkcija je kompleksnosti O(N^2).
+
+Potpun optimizacioni prostor predstavlja razlicite kombinacije jedinica u sekvenci od 31 bit.
+Sa definisanim uslovom da razlika jedinica i nula mora da bude tacno jedan, imamo 2 pocetne konfiguracije:
+
+1111111111111110000000000000000 - 15 jedinica, 16 nula
+i
+1111111111111111000000000000000 - 16 jedinica, 15 nula
+
+Ove dve kombinacije treba iskombinocati tako  da poslednja kombinacija bude simetricna pocetnim, tj
+
+0000000000000000111111111111111 - 15 jedinica, 16 nula
+i
+0000000000000001111111111111111 - 16 jedinica, 15 nula
+
+Ukupan broj mogucih pozicija je C(31, 15) * 2. "* 2" dolazi iz toga sto treba da uracunamo varijantu gde imamo 15 jedinica i jednu gde imamo 16 jedinica. Ista je brojka,
+razlika je samo u tome sto posmatramo "15 jedinica" u prvoj situaciji, a drugoj "15 nula".
+
+Ovo je izvodljivo brute-force pristupom.
+
+Sva resenja pronadjena brute force pristupom se nalaze u log.txt
+
+

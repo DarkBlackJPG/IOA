@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/stefa/OneDrive/Desktop/ETF/IOA_kodovi/DZ_13/Brute_force_cpp/main.cpp
+iostream
+-
+algorithm
+-
+vector
+-
+list
+-
+

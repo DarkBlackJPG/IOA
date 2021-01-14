@@ -82,44 +82,35 @@ def opt_test(x_array=None):
     auto_correlation_sum = 0
 
     # calculate crosscorelation
-    #print("crosscor")
     for shift in range(0, NUMBER_OF_BITS):
         crosscorelation_same_index = 0
         crosscorelation_different_index = 0
+        autocorrelation_same_index = 0
+        autocorrelation_different_index = 0
         for i in range(0, NUMBER_OF_BITS):
             if x0[(i + NUMBER_OF_BITS - shift) % NUMBER_OF_BITS] == x_array[i]:
                 crosscorelation_same_index += 1
             else:
                 crosscorelation_different_index += 1
+            if shift >= 1:
+                if x_array[i] == x_array[(i + NUMBER_OF_BITS - shift) % NUMBER_OF_BITS]:
+                    autocorrelation_same_index += 1
+                else:
+                    autocorrelation_different_index += 1
 
         temp = crosscorelation_same_index - crosscorelation_different_index
-        #print(shift)
-       # print(temp)
-       # print()
         if not (-4 < temp < 6):
-            cross_correlation_sum += 1000
-        else:
-            cross_correlation_sum += abs(temp)
-
-    # calculate autocorrelation
-    #print("autorcor")
-    for shift in range(1, NUMBER_OF_BITS):
-        autocorrelation_same_index = 0
-        autocorrelation_different_index = 0
-        for i in range(0, NUMBER_OF_BITS):
-            if x_array[i] == x_array[(i + NUMBER_OF_BITS - shift) % NUMBER_OF_BITS]:
-                autocorrelation_same_index += 1
+            if temp >= 6:
+                cross_correlation_sum += temp - 5
             else:
-                autocorrelation_different_index += 1
+                cross_correlation_sum += -3 - temp
 
         temp = autocorrelation_same_index - autocorrelation_different_index
-      #  print(shift)
-      #  print(temp)
-      #  print()
         if not (-18 < temp < 12):
-            auto_correlation_sum += 1000
-        else:
-            auto_correlation_sum += abs(temp)
+            if temp >= 12:
+                auto_correlation_sum += temp - 11
+            else:
+                auto_correlation_sum += -17 - temp
 
     return cross_correlation_sum, auto_correlation_sum
 
@@ -165,7 +156,7 @@ def genetic_algorithm():
         if current_minimum >= population[0].optfunction:
             current_minimum = population[0].optfunction
 
-        if current_generation >= GENERATIONS:
+        if current_generation >= GENERATIONS or population[0].optfunction == 0:
             return population[0], cummulative_minimum, cummulative_minimum_maybe
         current_elite = population[0:K_BEST]
         elite_parents = current_elite.copy()
@@ -237,41 +228,37 @@ def genetic_algorithm():
 
 
 
-# if __name__ == '__main__':
-#     for i in x:
-#         opt_test(i)
-#         value = 0
-#         for j in range(0, len(i)):
-#             value = 2 * value + i[j]
-#         print(value)
-
 if __name__ == '__main__':
 
-    organisms = []
-    the_force = []
-
-    for i in range(0, ITERATIONS):
-        minimums = []
-        best, cummulative_minimum, disturbance_in_the_force = genetic_algorithm()
-        print("======== " + str(i + 1) + " ========")
-        print("Best: " + str(best.optfunction))
-        print("Array: " + str(best.array))
-        print("====================")
-        organisms.append(best)
-
-    min = 2 ** 24 + 1
-    index = 0
-    for i in range(0, len(organisms)):
-        if (organisms[i].optfunction < min):
-            min = organisms[i].optfunction
-            index = i + 1
-
-    print("=====================")
-    print("======== " + str(index) + " ========")
-    print("Best: " + str(min))
-    print("Array: " + str(organisms[index - 1].array))
-    value = 0
-    for j in organisms[index - 1].array:
-        value = 2 * value + j
-    print("Decimal: " + str(value))
-    print("====================")
+    print(opt_test([1,1,0,0,1,0,1,0,1,0,0,0,1,0,1,1,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0]))
+#
+# if __name__ == '__main__':
+#
+#     organisms = []
+#     the_force = []
+#
+#     for i in range(0, ITERATIONS):
+#         minimums = []
+#         best, cummulative_minimum, disturbance_in_the_force = genetic_algorithm()
+#         print("======== " + str(i + 1) + " ========")
+#         print("Best: " + str(best.optfunction))
+#         print("Array: " + str(best.array))
+#         print("====================")
+#         organisms.append(best)
+#
+#     min = 2 ** 24 + 1
+#     index = 0
+#     for i in range(0, len(organisms)):
+#         if (organisms[i].optfunction < min):
+#             min = organisms[i].optfunction
+#             index = i + 1
+#
+#     print("=====================")
+#     print("======== " + str(index) + " ========")
+#     print("Best: " + str(min))
+#     print("Array: " + str(organisms[index - 1].array))
+#     value = 0
+#     for j in organisms[index - 1].array:
+#         value = 2 * value + j
+#     print("Decimal: " + str(value))
+#     print("====================")

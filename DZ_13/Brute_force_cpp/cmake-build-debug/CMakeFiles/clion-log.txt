@@ -1,0 +1,4 @@
+"C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" C:\Users\stefa\OneDrive\Desktop\ETF\IOA_kodovi\DZ_13\Brute_force_cpp
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/stefa/OneDrive/Desktop/ETF/IOA_kodovi/DZ_13/Brute_force_cpp/cmake-build-debug
