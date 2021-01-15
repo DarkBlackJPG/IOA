@@ -25,6 +25,7 @@ K_BEST = int(POPULATION * K_FACTOR)
 
 x0 = [1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1]
 
+
 # Pronadjena resenja
 # x = []
 # x.append([1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0])
@@ -34,7 +35,6 @@ x0 = [1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1,
 # x.append([0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0, 1, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0])
 # x.append([0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0, 1, 1.0, 0.0, 0.0, 1.0])
 # x.append([1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0])
-
 
 
 def opt(x_array=None):
@@ -226,39 +226,38 @@ def genetic_algorithm():
         population = current_elite.copy()
         current_elite.clear()
 
+    # if __name__ == '__main__':
+
+    #   print(opt_test([1,1,0,0,1,0,1,0,1,0,0,0,1,0,1,1,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0]))
 
 
 if __name__ == '__main__':
 
-    print(opt_test([1,1,0,0,1,0,1,0,1,0,0,0,1,0,1,1,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0]))
-#
-# if __name__ == '__main__':
-#
-#     organisms = []
-#     the_force = []
-#
-#     for i in range(0, ITERATIONS):
-#         minimums = []
-#         best, cummulative_minimum, disturbance_in_the_force = genetic_algorithm()
-#         print("======== " + str(i + 1) + " ========")
-#         print("Best: " + str(best.optfunction))
-#         print("Array: " + str(best.array))
-#         print("====================")
-#         organisms.append(best)
-#
-#     min = 2 ** 24 + 1
-#     index = 0
-#     for i in range(0, len(organisms)):
-#         if (organisms[i].optfunction < min):
-#             min = organisms[i].optfunction
-#             index = i + 1
-#
-#     print("=====================")
-#     print("======== " + str(index) + " ========")
-#     print("Best: " + str(min))
-#     print("Array: " + str(organisms[index - 1].array))
-#     value = 0
-#     for j in organisms[index - 1].array:
-#         value = 2 * value + j
-#     print("Decimal: " + str(value))
-#     print("====================")
+    organisms = []
+    the_force = []
+
+    for i in range(0, ITERATIONS):
+        minimums = []
+        best, cummulative_minimum, disturbance_in_the_force = genetic_algorithm()
+        print("======== " + str(i + 1) + " ========")
+        print("Best: " + str(best.optfunction))
+        print("Array: " + str(best.array))
+        print("====================")
+        organisms.append(best)
+
+    min = 2 ** 24 + 1
+    index = 0
+    for i in range(0, len(organisms)):
+        if (organisms[i].optfunction < min):
+            min = organisms[i].optfunction
+            index = i + 1
+
+    print("=====================")
+    print("======== " + str(index) + " ========")
+    print("Best: " + str(min))
+    print("Array: " + str(organisms[index - 1].array))
+    value = 0
+    for j in organisms[index - 1].array:
+        value = 2 * value + j
+    print("Decimal: " + str(value))
+    print("====================")

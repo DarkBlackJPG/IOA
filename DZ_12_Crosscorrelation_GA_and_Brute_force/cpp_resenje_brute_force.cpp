@@ -60,14 +60,6 @@ double opt_function(int* x) {
 }
 
 int main() {
-    auto t1 = std::chrono::high_resolution_clock::now();
-    std::cout << opt_function(new int[]{1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0}) << std::endl;
-    auto t2 = std::chrono::high_resolution_clock::now();
-
-    auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count();
-
-    std::cout << duration << std::endl;
-    
     int k = 15;
     int n = 31;
     int i, j;

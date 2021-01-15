@@ -2,12 +2,10 @@
 
 [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0]........1431489163
 
+(Resenje pronadjeno geneticnkim algoritmom)
 
 Ako postoji jedno resenje, tada mozemo da zakljucimo da postoji jos 30 drugih resenja koji su zapravo shiftovane kombinacije za neko odredjeno k = 0....30.
 Dakle najmanje postoji 31 resenje ako usvojimo pretpostavku da resenje uopste postoji
-
-Potpuna pretraga ovog optimizacionog problema nije moguca jer je optimizacioni prostor poprilicno velik i pored svoje velicine, optimizaciona funkcija nije trivijalna -
-optimizaciona funkcija je kompleksnosti O(N^2).
 
 Potpun optimizacioni prostor predstavlja razlicite kombinacije jedinica u sekvenci od 31 bit.
 Sa definisanim uslovom da razlika jedinica i nula mora da bude tacno jedan, imamo 2 pocetne konfiguracije:
@@ -25,8 +23,10 @@ i
 Ukupan broj mogucih pozicija je C(31, 15) * 2. "* 2" dolazi iz toga sto treba da uracunamo varijantu gde imamo 15 jedinica i jednu gde imamo 16 jedinica. Ista je brojka,
 razlika je samo u tome sto posmatramo "15 jedinica" u prvoj situaciji, a drugoj "15 nula".
 
-Ovo je izvodljivo brute-force pristupom.
-
+Broj poziva optimizacione funkcije je oko 600 miliona, sto je donekle razumna velicina optimizacionog prostora za potencijalni brute force.
+-----------------------------------
 Sva resenja pronadjena brute force pristupom se nalaze u log.txt
+Resenje u ovom dokumentu je dobijeno uz pomoc GA. Kod se nalazi u genetic.py
+Brute Force pristup je radjen u CPP i nalazi se u cpp_resenje_brute_force.cpp
 
 
